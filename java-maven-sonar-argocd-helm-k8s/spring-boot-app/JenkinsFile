@@ -1,6 +1,5 @@
 pipeline {
-    agent any
-
+ 
     environment {
         PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" // Docker CLI path
         DOCKER_IMAGE = "tarunkumarsurisetty/ultimate-cicd:${BUILD_NUMBER}"
@@ -8,6 +7,13 @@ pipeline {
         GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
         GIT_USER_NAME = "tarunkumar-surisetty"
     }
+
+  agent {
+    docker {
+      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+    }
+  }
 
     stages {
 
