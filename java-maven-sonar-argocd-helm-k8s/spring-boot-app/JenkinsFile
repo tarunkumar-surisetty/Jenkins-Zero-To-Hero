@@ -17,6 +17,13 @@ pipeline {
 
     stages {
 
+        stage('Test') {
+            steps {
+                sh 'echo $PATH'
+                sh 'which sh'
+                sh 'which docker'
+            }
+        }
         stage('Checkout') {
             steps {
                 checkout scm
