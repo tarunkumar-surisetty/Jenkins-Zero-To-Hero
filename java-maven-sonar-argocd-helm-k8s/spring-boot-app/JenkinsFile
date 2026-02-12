@@ -1,7 +1,7 @@
 pipeline {
  
     environment {
-        PATH = "/usr/local/bin:/opt/homebrew/bin:${env.PATH}" // Docker CLI path
+        PATH = "/usr/local/bin/docker:/opt/homebrew/bin:${env.PATH}" // Docker CLI path
         DOCKER_IMAGE = "tarunkumarsurisetty/ultimate-cicd:${BUILD_NUMBER}"
         SONAR_URL = "http://localhost:9000"
         GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
