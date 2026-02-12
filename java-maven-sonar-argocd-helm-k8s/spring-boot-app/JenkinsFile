@@ -1,6 +1,7 @@
 pipeline {
  
     environment {
+        TMPDIR = "/tmp/jenkins"
         PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" // Docker CLI path
         DOCKER_IMAGE = "tarunkumarsurisetty/ultimate-cicd:${BUILD_NUMBER}"
         SONAR_URL = "http://localhost:9000"
