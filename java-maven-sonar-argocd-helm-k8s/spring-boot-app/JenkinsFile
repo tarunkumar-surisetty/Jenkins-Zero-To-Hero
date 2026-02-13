@@ -1,5 +1,7 @@
 pipeline {
- 
+
+  agent any
+
     environment {
         TMPDIR = "/tmp/jenkins"
         PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" // Docker CLI path
@@ -9,22 +11,8 @@ pipeline {
         GIT_USER_NAME = "tarunkumar-surisetty"
     }
 
-  agent {
-    docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
-    }
-  }
-
     stages {
 
-        stage('Test') {
-            steps {
-                sh 'echo $PATH'
-                sh 'which sh'
-                sh 'which docker'
-            }
-        }
         stage('Checkout') {
             steps {
                 checkout scm
